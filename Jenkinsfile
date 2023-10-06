@@ -33,5 +33,15 @@ pipeline{
                 }
              }
         }
-    }
+        stage ('K8S Deploy') {
+       
+                kubernetesDeploy(
+                    configs: 'my-docker-repo/my-springboot-deployment.yaml',
+                    kubeconfigId: 'K8S',
+                    enableConfigSubstitution: true
+                    )               
+        }
+    
 }
+    }
+
