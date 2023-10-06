@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('Cloning Git'){
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Nazeeer7/sre-exercise']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Nazeeer7/sre-exercise.git']])
             }
         }
         stage('Build Maven'){
