@@ -4,12 +4,12 @@ pipeline{
     }
     agent any
     environment{
-         registry = "654698928147.dkr.ecr.ap-south-1.amazonaws.com/my-docker-repo1"
+         registry = "654698928147.dkr.ecr.ap-south-1.amazonaws.com/my-docker-repo"
     }
     stages{
         stage('Cloning Git'){
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SNazeer786/springboot-app.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Nazeeer7/sre-exercise']])
             }
         }
         stage('Build Maven'){
@@ -29,7 +29,7 @@ pipeline{
              steps{  
                  script {
                      sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 654698928147.dkr.ecr.ap-south-1.amazonaws.com'
-                     sh 'docker push 654698928147.dkr.ecr.ap-south-1.amazonaws.com/my-docker-repo1:latest'
+                     sh 'docker push 654698928147.dkr.ecr.ap-south-1.amazonaws.com/my-docker-repo'
                 }
              }
         }
